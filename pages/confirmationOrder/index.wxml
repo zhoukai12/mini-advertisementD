@@ -1,0 +1,51 @@
+<!--pages/confirmationOrder/index.wxml-->
+<wxs src="../../utils/tools.wxs" module="tools"></wxs>
+<view class="warp">
+  <view class="addressBox" style="display: {{isSweepCode?'block':'none'}}">
+    <view class="title" bindtap="chooseAddress">收货地址</view>
+    <view class="text">收货人：{{addressInfo.userName}}</view>
+    <view class="text">收货地址：{{addressInfo.detailInfo}}</view>
+    <view class="text">收货人号码：{{addressInfo.telNumber}}</view>
+  </view>
+  <view class="content">
+    <view class="h1">商品明细</view>
+    <view class="line"></view>
+    <view class="orderList">
+      <view class="item" wx:for='{{alreadyPointList}}' wx:key='index'>
+        <view class="left">
+          <view class="name">{{item.goodsName}}</view>
+          <view class="detail">{{item.goodsIntroduce}}</view>
+        </view>
+        <view class="center">* {{item.goodsCount}}</view>
+        <view class="right">¥ {{item.goodsCount*item.goodsDiscountPrice}}</view>
+      </view>
+    </view>
+    <view class="line line1"></view>
+    <view class="statistics">共2个商品，小记：<text>¥ {{tools.cartTotalPrice(alreadyPointList)}}</text></view>
+    <!-- <view class="discount">
+      <view class="left">优惠</view>
+      <view class="right">XX优惠 -¥ 21.00</view>
+    </view> -->
+    <view class="payTitle" style="display: {{isSweepCode?'none':'block'}}">支付方式</view>
+    <view class="payBox" style="display: {{isSweepCode?'none':'flex'}}">
+      <view class="li" bindtap='paySL'>
+        <image src='/images/btn1.png'></image>
+      </view>
+      <view class="li" bindtap='paySM'>
+        <image src='/images/btn2.png'></image>
+      </view>
+       <view class="li" bindtap='payBalance' style="display: {{isShowVipBtn?'block':'none'}}">
+      <image src='/images/btn3.png'></image>
+    </view>
+    </view>
+  </view>
+  <view class="bottomBar">
+    <view class="price">合计 <text>￥{{tools.cartTotalPrice(alreadyPointList)}}</text></view>
+    <button bindtap='settleAccounts'>收银</button>
+  </view>
+</view>
+
+<view class="maskTips" style="display: {{isShowTips?'flex':'none'}}">
+    <image src='/images/tips.png'></image>
+    <view class="text">请出示二维码 {{isShowTipsTime}} s</view>
+  </view>

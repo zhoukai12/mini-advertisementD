@@ -1,0 +1,291 @@
+/* pages/confirmationOrder/index.wxss */
+
+view {
+  box-sizing: border-box;
+}
+
+.warp {
+  width: 100%;
+  height: 100%;
+}
+
+.warp .content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 33rpx 63rpx 50rpx;
+}
+
+.addressBox {
+  width: 100%;
+  padding: 33rpx 0;
+  border-bottom: 8rpx solid #f4f5f8;
+}
+
+.addressBox .title {
+  width: 100%;
+  height: 73rpx;
+  border-bottom: 4rpx solid #f4f5f8;
+  padding: 0 63rpx 19rpx 63rpx;
+  color: #2a303c;
+  font-size: 29rpx;
+}
+
+.addressBox .text {
+  width: 100%;
+  margin-top: 16rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  padding: 0 63rpx;
+  color: #2a303c;
+  font-size: 29rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.warp .content .h1 {
+  width: 100%;
+  height: 50rpx;
+  font-size: 29rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(42, 48, 60, 1);
+  line-height: 50rpx;
+}
+
+.warp .content .line {
+  width: 120%;
+  height: 4rpx;
+  background: #eaeaec;
+  margin-top: 19rpx;
+  margin-bottom: 10rpx;
+}
+
+.warp .content .line1 {
+  width: 100%;
+  margin-top: 20rpx;
+  margin-bottom: 0;
+}
+
+.warp .content .orderList {
+  width: 100%;
+  padding-top: 11rpx;
+}
+
+.warp .orderList .item {
+  width: 100%;
+  margin: 10rpx 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.orderList .item .left {
+  width: 334rpx;
+}
+
+.orderList .item .left .name {
+  width: 100%;
+  height: 50rpx;
+  font-size: 29rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(42, 48, 60, 1);
+  line-height: 50rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.orderList .item .left .detail {
+  width: 100%;
+  font-size: 19rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(141, 146, 163, 1);
+  line-height: 23rpx;
+}
+
+.orderList .item .center {
+  width: 80rpx;
+  height: 50rpx;
+  font-size: 29rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(42, 48, 60, 1);
+  line-height: 50rpx;
+  text-align: center;
+}
+
+.orderList .item .right {
+  width: 160rpx;
+  height: 50rpx;
+  font-size: 29rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(42, 48, 60, 1);
+  line-height: 50rpx;
+  text-align: right;
+}
+
+.warp .content .statistics {
+  width: 100%;
+  text-align: right;
+  margin-top: 33rpx;
+  height: 35rpx;
+  font-size: 25rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(141, 146, 163, 1);
+  line-height: 35rpx;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.warp .content .statistics text {
+  height: 42rpx;
+  font-size: 29rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: rgba(42, 48, 60, 1);
+  line-height: 42rpx;
+}
+
+.warp .content .discount {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 75rpx;
+}
+
+.content .discount .left {
+  width: 50rpx;
+  height: 35rpx;
+  font-size: 25rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(141, 146, 163, 1);
+  line-height: 35rpx;
+}
+
+.content .discount .right {
+  width: 400rpx;
+  height: 35rpx;
+  font-size: 25rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(141, 146, 163, 1);
+  line-height: 35rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.content .payTitle {
+  width: 100%;
+  height: 50rpx;
+  font-size: 29rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(42, 48, 60, 1);
+  line-height: 50rpx;
+  margin-top: 64rpx;
+}
+
+.content .payBox {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 30rpx;
+}
+
+.content .payBox .li {
+  width: 304rpx;
+  height: 167rpx;
+  margin-bottom: 20rpx;
+}
+
+.content .payBox .li.active {
+  opacity: 1;
+}
+
+.content .payBox .li image {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.warp .bottomBar {
+  width: 100%;
+  height: 104rpx;
+  background: rgba(255, 255, 255, 1);
+  box-shadow: 0px 0px 17rpx 0px rgba(241, 243, 248, 1);
+  padding: 0 0 0 63rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+.warp .bottomBar .price {
+  width: 370rpx;
+  height: 42rpx;
+  line-height: 42rpx;
+  display: flex;
+  align-items: center;
+  font-size: 29rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: rgba(42, 48, 60, 1);
+}
+
+.warp .bottomBar .price text {
+  margin-left: 30rpx;
+}
+
+.warp .bottomBar button {
+  width: 242rpx;
+  height: 104rpx;
+  background: rgba(26, 173, 25, 1);
+  font-size: 29rpx;
+  font-family: PingFangSC-Semibold, PingFang SC;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 1);
+  line-height: 104rpx;
+  text-align: center;
+}
+
+.maskTips {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.maskTips image {
+  display: block;
+  width: 496rpx;
+  height: 496rpx;
+}
+
+.maskTips .text {
+  width: 100%;
+  height: 42rpx;
+  margin-top: 50rpx;
+  color: #fff;
+  font-size: 29rpx;
+  text-align: center;
+}

@@ -1,0 +1,29 @@
+<!--components/member/index.wxml-->
+<view class="member">
+  <!-- 会员卡背景图片 -->
+  <view class="member_card" style="background-image: url('/images/memberBGI.png')">
+    <!-- 遮层 -->
+    <view class="card">
+      <!-- 会员用户信息 -->
+      <view class="userInfo">
+        <image src="{{cardInfo.headImg||'https://wx.qlogo.cn/mmopen/vi_32/GlOGhBiaJtPWibd574vnPFic3O4z7aiaDPKmhqlI7USQFLmX3kiac4GcEjrhdET4ibMrRS4VU2EJm9kdiaZ6mWsBW2x5w/132'}}" class="head_img"></image>
+        <view class="nickname">{{cardInfo.nickName}}</view>
+      </view>
+      <!-- 会员卡信息 -->
+      <view class="vip_user_info">
+        <view class="vip_user_info_item">
+          <view class="vip_user_info_item_label">会员积分</view>
+          <view class="vip_user_info_item_value">{{cardInfo.integral||0}}</view>
+        </view>
+        <view class="vip_user_info_item">
+          <view class="vip_user_info_item_label">会员卡余额</view>
+          <view class="vip_user_info_item_value">{{cardInfo.balance||0}}元</view>
+        </view>
+        <view class="vip_user_info_item">
+          <view class="vip_user_info_item_label">优惠券</view>
+          <view class="vip_user_info_item_value">{{cardInfo.couponsNum||0}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

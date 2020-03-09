@@ -1,0 +1,267 @@
+// sku规格显示格式化，返回"规格1：值1; 规格2：值2"
+var formatSpec = function (spec) {
+  var result = "";
+  if (spec && typeof spec === 'string') {
+    var specList = JSON.parse(spec);
+    specList.map(function (item, index, list) {
+      result += (item.name + "：" + item.value);
+      index + 1 < list.length && (result += "; ")
+    })
+  }
+  return result;
+}
+
+// 字符串转数字
+var toNumber = function (value) {
+  console.log(parseFloat)
+  console.log(parseFloat(value))
+  if (isNaN(parseFloat(value))) {
+    return 0
+  } else {
+    return parseFloat(value)
+  }
+}
+
+// 购物车商品总数量计算
+var cartQuantity = function (cartList) {
+  var result = 0;
+  cartList.map(function (item) {
+    result += item.goodsCount;
+  })
+  result > 99 && (result = '99+');
+  return result;
+}
+
+// 购物车商品价格计算
+var cartTotalPrice = function (cartList, isMember = 0) {
+  var result = 0;
+  cartList.map(function (item) {
+    result += (item.goodsCount * item.goodsDiscountPrice)
+  })
+  return result.toFixed(2);
+}
+
+//计算购物车中当前商品添加了多少件
+var currCount = function (arr, id) {
+  //默认数量为0
+  var result = 0;
+  arr.map(function (item) {
+    if (item.id == id) {
+      result += item.goodsCount
+    }
+  })
+  return result;
+}
+
+
+
+// 购物车是否选中了全部商品，true全选 false未全选
+var cartIsSelectAll = function (cartList, type) {
+  var checkLength = 0;
+  cartList.map(function (item) {
+    if (!item.cancelSelected) {
+      checkLength++;
+    }
+  })
+  if (type == 'count') {
+    return checkLength;
+  } else {
+    return checkLength === cartList.length;
+  }
+}
+
+//选择规格展示对应的选中文案
+var textOptions = function (specOptions) {
+  var specOptions = specOptions || []
+  var text = '';
+  var ggList=[];
+  specOptions.map(function (item) {
+    item.options.map(function (obj) {
+      if (obj.isSelected == 1) {
+        text = text + obj.value+' ';
+        ggList.push(obj.value)
+      }
+    })
+  })
+  return { text, ggList};
+}
+
+// 保留两位小数
+var priceFixed = function (price) {
+  var result = '';
+  if (price || price == 0) {
+    result = Number(price).toFixed(2);
+  }
+  return result;
+}
+
+// 隐藏手机号中间4位
+var cellHidden = function (phone) {
+  if (typeof phone == 'number') {
+    phone = phone.toString();
+  }
+  return phone ? (phone.substring(0, 3) + '****' + phone.substring(7, 11)) : '';
+}
+
+// 订单状态格式化
+var formatOrderStatus = function (order) {
+  var label = "";
+  var textColor = "#CCCCCC";
+  if (order.orderStatus === "CLOSED") {
+    label = "已关闭";
+  } else if (order.orderStatus === "NOTPAY") {
+    label = "待付款";
+    textColor = "#cc0202";
+  } else if (order.orderStatus === "REFUND") {
+    label = "已退款";
+    textColor = "#cc0202";
+  } else if (order.orderStatus === "SUCCESS" && order.logisticsInfo.refundStatus == 0) {
+    label = "退款中";
+    textColor = "#cc0202";
+  } else if (order.orderStatus === "SUCCESS" && (order.logisticsInfo.logisticsStatus == 1 || order.logisticsInfo.logisticsStatus == null)) {
+    label = "待接单";
+  } else if (order.orderStatus === "SUCCESS" && order.logisticsInfo.logisticsStatus == 2) {
+    label = "待发货";
+    if (order.logisticsInfo.orderSort == 3) {
+      label = "待核销";
+    }
+  } else if (order.orderStatus === "SUCCESS" && order.logisticsInfo.logisticsStatus == 3) {
+    label = "配送中";
+  } else if (order.orderStatus === "SUCCESS" && order.logisticsInfo.logisticsStatus == 4) {
+    label = "已完成";
+  }
+  return {
+    label: label,
+    textColor: textColor
+  };
+}
+
+// 订单状态格式化
+var formatOrderDetailStatus = function (order) {
+  var label = "";
+  var desc = "";
+  var iconName = "";
+  var bgColor = "#cc0202";
+  if (order.orderStatus === "CLOSED") {
+    label = "已关闭";
+    desc = "订单已关闭，欢迎下次惠顾！";
+    iconName = "status-warning.png";
+  } else if (order.orderStatus === "NOTPAY") {
+    label = "待支付";
+    // desc = "订单在14:59分钟后自动关闭！";
+    desc = "订单在15分钟内自动关闭！";
+    iconName = "status-warning.png";
+  } else if (order.orderStatus === "REFUND") {
+    label = "已退款";
+    desc = "订单已完成退款，期待您的下次光临！";
+    bgColor = "#999";
+    iconName = "status-refund.png";
+  } else if (order.orderStatus === "SUCCESS" && order.logisticsInfo.refundStatus == 0) {
+    label = "退款中";
+    desc = "订单已申请退款，等待商家退款！";
+    iconName = "status-warning.png";
+  } else if (order.orderStatus === "SUCCESS" && (order.logisticsInfo.logisticsStatus == 1 || order.logisticsInfo.logisticsStatus == null)) {
+    label = "待接单";
+    desc = "订单已支付，等待商家接单！";
+    iconName = "status-wait-send.png";
+  } else if (order.orderStatus === "SUCCESS" && order.logisticsInfo.logisticsStatus == 2) {
+    label = "待发货";
+    desc = "订单已支付，等待商家发货！";
+    iconName = "status-wait-send.png";
+    if (order.logisticsInfo.orderSort == 3) {
+      label = "待核销";
+      desc = "订单已支付，请到线下门店核销！";
+      iconName = "status-wait-receive.png";
+    }
+  } else if (order.orderStatus === "SUCCESS" && order.logisticsInfo.logisticsStatus == 3) {
+    if (order.logisticsInfo.orderSort == 4) {
+      label = "配送中";
+      desc = "订单已发货，请耐心等待并签收！";
+    } else if (order.logisticsInfo.orderSort == 3) {
+      label = "待核销";
+      desc = "订单已支付，请到线下门店核销！";
+    }
+    iconName = "status-wait-receive.png";
+  } else if (order.orderStatus === "SUCCESS" && order.logisticsInfo.logisticsStatus == 4) {
+    label = "已完成";
+    desc = "订单已完成，期待您的下次光临！";
+    iconName = "status-finish.png";
+  }
+  return {
+    label: label,
+    desc: desc,
+    iconName: iconName,
+    bgColor: bgColor
+  };
+}
+
+// 订单商品详情Sting格式化Array显示
+var formatGoodsDetails = function (goodsDetails) {
+  var result = [];
+  if (goodsDetails && typeof goodsDetails === 'string') {
+    result = JSON.parse(goodsDetails);
+  }
+  return result;
+}
+
+// 单笔订单商品总数量计算
+var totalCommoditesQuantity = function (commodityList) {
+  var result = 0;
+  commodityList.map(function (item) {
+    result += item.quantity;
+  })
+  return result;
+}
+
+// 快递到家/上门自提格式化显示
+var formatOrderFinishType = function (orderSort) {
+  var result = "";
+  if (orderSort == 4) {
+    result = "快递到家";
+  } else if (orderSort == 3) {
+    result = "上门自提";
+  }
+  return result;
+}
+
+// 订单详情页商品金额计算
+var totalCommodityPrice = function (goodsDetails) {
+  var list = [];
+  var result = 0;
+  if (goodsDetails && typeof goodsDetails === 'string') {
+    list = JSON.parse(goodsDetails);
+  }
+  list.map(function (item) {
+    result += (item.price * item.quantity);
+  })
+  return result.toFixed(2);
+}
+
+// 获取第一张推荐图片
+var getFirstImage = function (images) {
+  var list = [];
+  if (images) {
+    list = images.split('|');
+  }
+  return list[0];
+}
+
+
+module.exports = {
+  formatSpec: formatSpec,
+  cartQuantity: cartQuantity,
+  cartIsSelectAll: cartIsSelectAll,
+  cartTotalPrice: cartTotalPrice,
+  priceFixed: priceFixed,
+  cellHidden: cellHidden,
+  formatOrderStatus: formatOrderStatus,
+  formatGoodsDetails: formatGoodsDetails,
+  totalCommoditesQuantity: totalCommoditesQuantity,
+  formatOrderFinishType: formatOrderFinishType,
+  totalCommodityPrice: totalCommodityPrice,
+  getFirstImage: getFirstImage,
+  formatOrderDetailStatus: formatOrderDetailStatus,
+  toNumber: toNumber,
+  currCount: currCount,
+  textOptions: textOptions
+}

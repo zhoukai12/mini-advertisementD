@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "widget-member-card":"/components/member/index"
+  },
+  "navigationBarTitleText":"结账"
+}

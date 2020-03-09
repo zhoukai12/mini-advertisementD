@@ -1,0 +1,34 @@
+/* pages/home/index.wxss */
+.warp{
+  width: 100%;
+  height: 100vh;
+  background: url('http://sxyueshang.com/mini-advert/images/haibao.png') no-repeat top center/100%;
+  position: relative;
+}
+.warp swiper{
+  width: 100%;
+  height: 100%;
+}
+
+.warp .button{
+  width: 402rpx;
+  height: 89rpx;
+  background: url('http://sxyueshang.com/mini-advert/images/goBtn.png') no-repeat center/100%;
+  position: absolute;
+  bottom: 120rpx;
+  left: 50%;
+  margin-left: -201rpx;
+}
+.swiper-item{
+  width: 100%;
+  height: 100%;
+}
+image{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+video{
+  width: 100%!important;
+  height: 100%!important;
+}

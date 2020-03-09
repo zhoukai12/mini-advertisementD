@@ -1,0 +1,52 @@
+<!--pages/payment/index.wxml-->
+<view class="warp">
+
+  <widget-member-card cardInfo="{{cardInfo}}" wx:if='{{isShowVip}}'/>
+  <view class="paymentStatus">
+    <image src='/images/{{status}}.png'></image>
+  </view>
+  <view class="money">¥{{amount}}</view>
+  <view class="tips" style="display:{{isMsg?'block':'none'}}">{{msgTips}}</view>
+  <view class="payBtn" style="display:{{isOK?'flex':'none'}}">
+    <view class="pay1" bindtap='paySL' >
+      <image src='/images/btn1.png'></image>
+    </view>
+    <view class="pay2" bindtap='paySM' >
+      <image src='/images/btn2.png'></image>
+    </view>
+    <view class="pay3" bindtap='payBalance'>
+      <image src='/images/btn3.png'></image>
+    </view>
+  </view>
+  <view class="infoMation" style="display:{{isPay?'block':'none'}}">
+    <view class="item">
+      <view class="left">支付方式</view>
+      <view class="right">{{billType}}</view>
+    </view>
+    <view class="item">
+      <view class="left">商户全称</view>
+      <view class="right">{{storeName}}</view>
+    </view>
+    <view class="item">
+      <view class="left">支付时间</view>
+      <view class="right">{{payment_time}}</view>
+    </view>
+    <view class="item">
+      <view class="left">交易单号</view>
+      <view class="right">{{transaction_id}}</view>
+    </view>
+    <view class="item">
+      <view class="left">商户单号</view>
+      <view class="right">{{order_number}}</view>
+    </view>
+  </view>
+  <view class="timeOut" wx:if='{{timeOutShow}}' bindtap='closeTimeOut'>
+    关闭（{{timeOut}}S）
+  </view>
+
+  <view class="maskTips" style="display: {{isShowTips?'flex':'none'}}">
+    <image src='/images/tips.png'></image>
+    <view class="text">请出示二维码 {{isShowTipsTime}} s</view>
+  </view>
+</view>
+

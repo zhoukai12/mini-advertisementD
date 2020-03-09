@@ -1,0 +1,20 @@
+<!--pages/home/index.wxml-->
+<view class="warp">
+  <swiper autoplay="{{autoplay}}" bindchange='swiperChange' circular="{{circular}}" interval="{{interval}}" previous-margin="{{previousMargin}}px" next-margin="{{nextMargin}}px">
+    <block>
+      <swiper-item catchtouchmove='catchTouchMove'>
+        <image mode='widthFix' src='http://sxyueshang.com/mini-advert/images/haibao.png'></image>
+      </swiper-item>
+      <!-- <swiper-item catchtouchmove='catchTouchMove'>
+        <video bindended='videoEnd' id='video1' muted="{{true}}" src='https://abyys.club/2f92cb1d63c0ce80ece55397904c5903.webm' loop='{{loop}}' controls='{{controls}}' autoplay='{{true}}' show-play-btn='false'></video>
+      </swiper-item> -->
+
+    </block>
+  </swiper>
+  <!-- <view class="button" bindtap='goOrderMeal'></view> -->
+  <!-- <navigator class="button" target="miniProgram" open-type="navigate" app-id="wx1280c1a22a7ff987" path="pages/index/index" extra-data="" version="trial"></navigator> -->
+  <navigator class="button" url="plugin://hello-plugin/index">
+   
+  </navigator>
+  <view class="button" bindtap='goOrderMeal'></view>
+</view>

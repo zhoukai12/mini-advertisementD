@@ -1,0 +1,122 @@
+<wxs src="../../utils/tools.wxs" module="tools"></wxs>
+<view class="orderBox">
+  <view class="tabList">
+    <view class="tabItem {{classId==item.id?'active':''}}" wx:key='index' data-id='{{item.id}}' wx:for='{{labelList}}' bindtap='changeLabel'>{{item.className}}</view>
+  </view>
+  <view class="itemList">
+    <scroll-view scroll-y bindscrolltolower="scrolltolower">
+      <view class="itemLi" wx:for="{{ foodList }}" wx:key='index'>
+        <image src='http://www.xagzts.cn/{{item.goodsListPic}}'></image>
+        <view class="foodsInfo">
+          <view class="foodsName">{{item.goodsName}}</view>
+          <view class="foodsDetail">{{item.goodsIntroduce}}</view>
+          <view class="foodsSale">月售{{item.MonthVolume}}</view>
+          <view class="foodsPrice">
+            <view class="boxLeft">
+              <view class="now">¥ {{item.goodsDiscountPrice}}</view>
+              <view class="before">¥{{item.goodsPrice}}</view>
+            </view>
+            <view class="boxRight">
+              <view class="reduce" style="display:{{(tools.currCount(alreadyPointList,item.id)?'block':'none')}}" bindtap='reduceShop' data-item='{{item}}'>
+                <image src='/images/reduce.png'></image>
+              </view>
+              <view class="num" style="display:{{(tools.currCount(alreadyPointList,item.id)?'block':'none')}}">{{tools.currCount(alreadyPointList,item.id)}}</view>
+              <view class="add" bindtap='addShop' data-item='{{item}}'>
+                <image src='/images/add.png'></image>
+              </view>
+            </view>
+          </view>
+          <view class="foodsDiscount">{{item.text||''}}</view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+  <view class="bottomBar">
+    <view class="iconBox" bindtap='showDia'>
+      <image src='/images/shop.png'></image>
+      <view class="num">{{tools.cartQuantity(alreadyPointList)>99?'99+':tools.cartQuantity(alreadyPointList)}}</view>
+    </view>
+    <view class="totalPrice">¥{{tools.cartTotalPrice(alreadyPointList)}}</view>
+    <button open-type="getUserInfo" wx:if='{{!userInfo&&isSweepCode}}' lang="zh_CN" bindgetuserinfo="bindGetUserInfo">
+      下单
+    </button>
+
+    <button wx:else bindtap='goSettleAccounts'>下单</button>
+  </view>
+</view>
+
+
+<!-- 购物车底层弹窗 -->
+<view class="showDia" bindtap="hideShowDia" style="display:{{showDia&&alreadyPointList.length?'block':'none'}}">
+  <view class="shopBox" catchtap='stopBubbles'>
+    <view class="shopTop">
+      <view class="label">已选商品</view>
+      <view class="operation">
+        <text>清空所有</text>
+        <view class="deleteAll" catchtap="deleteAll">
+          <image src='/images/delete.png'></image>
+        </view>
+      </view>
+    </view>
+    <view class="content">
+      <view class="item" wx:for='{{alreadyPointList}}' wx:key='index'>
+        <view class="name">{{item.goodsName}} - {{item.skuId}}</view>
+        <view class="price">¥{{item.goodsDiscountPrice*item.goodsCount}}</view>
+        <view class="operationBox">
+          <view class="reduce" bindtap='shopSub' data-item='{{item}}'>
+            <image src='/images/reduce.png'></image>
+          </view>
+          <text>{{item.goodsCount}}</text>
+          <view class="add" bindtap='shopAdd' data-item='{{item}}'>
+            <image src='/images/add.png'></image>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+
+<!-- 商品弹窗规格 -->
+<view class="specificationsBox" bindtap='hideShowDia' style="display:{{specifications?'block':'none'}}">
+  <view class="box" catchtap='stopBubbles'>
+    <view class="close" bindtap='hideShowDia'>
+      <image src='/images/close.png'></image>
+    </view>
+    <image class="title" src='http://www.xagzts.cn/{{specificationsItem.goodsDetailPic[0]}}'></image>
+    <view class="detailBox">
+      <view class="name">{{specificationsItem.goodsName}}</view>
+      <view class="detail">{{specificationsItem.goodsIntroduce}}</view>
+      <view class="model" wx:for="{{specOptions}}" wx:key='index' wx:for-index="specOptionsIndex" wx:for-item="itemName">
+        <view class="top">{{itemName.label}}{{itemName.isCheck?"（多选）":"（单选）"}}</view>
+        <view class="labelBox">
+          <view class="li {{itemArr.isSelected?'active':''}}" wx:for='{{itemName.options}}' wx:key='index' wx:for-item="itemArr" bindtap='specificationSelection' data-parIndex='{{specOptionsIndex}}' data-index='{{index}}' data-id='{{itemArr.id}}'>{{itemArr.value}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="bottomBox">
+      <view class="allDetail">
+        <view class="left">
+          <view class="price">¥ {{specificationsItem.goodsDiscountPrice*temporary}}</view>
+          <view class="text">{{tools.textOptions(specOptions).text}}</view>
+        </view>
+        <view class="right">
+          <view class="reduce" bindtap='guigeSub'>
+            <image src='/images/reduce.png'></image>
+          </view>
+          <text>{{temporary||1}}</text>
+          <view class="add" bindtap='guigeAdd'>
+            <image src='/images/add.png'></image>
+          </view>
+        </view>
+      </view>
+      <view class="qdBtn" bindtap='quBtn'>确定</view>
+    </view>
+  </view>
+</view>
+
+
+<view class="maskTime" style="display: {{maskTime?'flex':'none'}}">
+  <view class="text">信息同步中~</view>
+</view>

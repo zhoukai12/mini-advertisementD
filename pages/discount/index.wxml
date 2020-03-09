@@ -1,0 +1,40 @@
+<!--pages/discount/index.wxml-->
+<view class="warp">
+  <view class="content">
+    <view class="h1">可使用优惠券</view>
+    <view class="availableDiscount">
+      <view class="item">
+        <view class="left">
+          <view class="h2">XX优惠券</view>
+          <view class="time">有效期2019.12.22-2019.12.24</view>
+        </view>
+        <view class="right">
+          <view class="price">¥
+            <text>10</text>
+          </view>
+          <view class="condition">满200可用</view>
+        </view>
+        <view class="selection">
+          <view class="icon"></view>
+        </view>
+      </view>
+    </view>
+    <view class="empty"></view>
+    <view class="h1">不可用优惠券</view>
+    <view class="unavailableDiscount">
+      <view class="item">
+        <view class="left">
+          <view class="h2">XX优惠券</view>
+          <view class="time">有效期2019.12.22-2019.12.24</view>
+        </view>
+        <view class="right">
+          <view class="price">¥
+            <text>10</text>
+          </view>
+          <view class="condition">满200可用</view>
+        </view>
+        <view class="selection">再买20元可用</view>
+      </view>
+    </view>
+  </view>
+</view>

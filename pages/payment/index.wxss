@@ -1,0 +1,149 @@
+/* pages/payment/index.wxss */
+
+.warp {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10rpx;
+}
+
+.paymentStatus {
+  width: 129rpx;
+  height: 113rpx;
+}
+
+.paymentStatus image {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.money {
+  width: 90%;
+  height: 50rpx;
+  font-size: 75rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(42, 48, 60, 1);
+  line-height: 50rpx;
+  text-align: center;
+  margin-top: 62rpx;
+}
+
+.tips {
+  margin-top: 108rpx;
+  width: 90%;
+  height: 42rpx;
+  font-size: 29rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(141, 146, 163, 1);
+  line-height: 42rpx;
+  text-align: center;
+}
+
+.payBtn {
+  width: 667rpx;
+  margin-top: 58rpx;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.payBtn view {
+  width: 304rpx;
+  height: 167rpx;
+  margin-bottom: 20rpx;
+}
+.payBtn view image{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+/* .payBtn .pay1 {
+  background: url('http://sxyueshang.com/mini-advert/images/btn1.png') no-repeat center/100%;
+}
+.payBtn .pay2 {
+  background: url('http://sxyueshang.com/mini-advert/images/btn2.png') no-repeat center/100%;
+}
+.payBtn .pay3 {
+  background: url('http://192.168.0.104/mini-advert/images/btn3.png') no-repeat center/100%;
+} */
+
+
+
+.infoMation {
+  width: 656rpx;
+  margin-top: 63rpx;
+}
+
+.infoMation .item {
+  width: 100%;
+  height: 42rpx;
+  display: flex;
+  justify-content: space-between;
+  margin: 10rpx 0;
+}
+
+.infoMation .item .left {
+  width: 120rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: left;
+}
+
+.infoMation .item view {
+  height: 42rpx;
+  font-size: 29rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(141, 146, 163, 1);
+  line-height: 42rpx;
+}
+
+.infoMation .item .right {
+  width: 320rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.timeOut{
+  width: 100%;
+  height: 40rpx;
+  line-height: 40rpx;
+  color: #000;
+  text-align: center;
+  margin-top: 10rpx;
+  font-weight: bold;
+}
+
+.maskTips{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.maskTips image{
+  display: block;
+  width: 496rpx;
+  height: 496rpx;
+}
+.maskTips .text{
+  width: 100%;
+  height: 42rpx;
+  margin-top: 50rpx;
+  color: #FFFFFF;
+  font-size: 29rpx;
+  text-align: center;
+}
